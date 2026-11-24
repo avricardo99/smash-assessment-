@@ -2,6 +2,7 @@ name: Check Scripts
 
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
@@ -10,15 +11,15 @@ permissions:
 jobs:
   check-scripts:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Check out repository
-        uses: actions/checkout@v9
+        uses: actions/checkout@v5
 
       - name: Run script exercise
-        shell: bash
-        run: bash task-1-script/count-files.sh
-        working-directory: ./junior
+        run: bash task-1-script/random-data.sh
 
       - name: Run configuration exercise
-        shell: bash
         run: bash task-2-configuration/check-service.sh
